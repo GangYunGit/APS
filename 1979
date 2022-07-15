@@ -1,0 +1,14 @@
+T = int(input())
+puzzle_column = []
+
+for test_case in range(1, T + 1):
+    N_K = list(map(int,input().split()))
+
+    for puzzle_length in range(0, N_K[0]):
+        puzzle_row = list(map(int, input().split()))
+        puzzle_column.append(puzzle_row)
+
+    print(puzzle_column)
+
+
+    # print('#' + str(test_case))
