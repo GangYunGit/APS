@@ -20,16 +20,16 @@
 
 ```python
 for row in range(N):
-      count = 0
-      for column in range(N):
-          if puzzle[row][column] == '1':
-              count += 1
-          else:
-              if count == K:
-                  is_K += 1
-              count = 0
-      if count == K:
-          is_K += 1
+    count = 0
+    for column in range(N):
+        if puzzle[row][column] == '1':
+            count += 1
+        else:
+            if count == K:
+                is_K += 1
+            count = 0
+    if count == K:
+        is_K += 1
 ```
 
 - 문제 풀이 과정
