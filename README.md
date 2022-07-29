@@ -3,7 +3,6 @@
 > SW Expert Academy
 
 - [1979](https://github.com/GangYunGit/Algorithm/tree/master/swea/1979)
-
 - [2001](https://github.com/GangYunGit/Algorithm/tree/master/swea/2001)
-
 - [1961](https://github.com/GangYunGit/Algorithm/tree/master/swea/1961)
+- [1974](https://github.com/GangYunGit/Algorithm/tree/master/swea/1974)
