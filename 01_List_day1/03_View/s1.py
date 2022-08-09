@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open("input.txt")
+
 for test_case in range(1, 11):  # 10개의 테스트 케이스
     width = int(input())  # 가로 길이
     bds = list(map(int, input().split()))  # 빌딩의 높이들을 배열에 저장
