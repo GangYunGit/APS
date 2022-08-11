@@ -8,7 +8,7 @@ T = int(input())
 for test_case in range(T):
     list_a = list(map(int,input().split()))
 
-    for i in range(1<<10):
+    for i in range(1<<10):  # 가능한 모든 부분집합의 경우의 수
         if i == 0:  # 공집합의 원소의 합이 0으로 계산되는 것을 제외
             continue
         sum_part = 0    # 각 부분집합의 합을 할당할 변수
