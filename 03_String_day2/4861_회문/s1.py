@@ -26,7 +26,9 @@ for test_case in range(1, T + 1):
             # 슬라이싱을 이용하여 뒤집은 문자열이 해당 문자열과 일치 시 palindrome
             if row_palindrome == row_palindrome[::-1]:
                 result = row_palindrome
+                break
             elif col_palindrome == col_palindrome[::-1]:
                 result = col_palindrome
+                break
 
     print(f'#{test_case} {result}')
