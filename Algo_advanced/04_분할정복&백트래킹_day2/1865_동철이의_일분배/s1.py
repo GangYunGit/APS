@@ -4,7 +4,7 @@ import sys
 sys.stdin = open('input.txt')
 
 
-def distribute_work(arr, start, end, j):
+def distribute_work(arr, start, end, combs):
     global max_p
     global p
 
@@ -20,11 +20,11 @@ def distribute_work(arr, start, end, j):
     for i in range(arr_length):
         if used[i] == 0:
             used[i] = 1
-            success_rate = success_rate_list[i][j]
+            success_rate = success_rate_list[i][combs]
             if success_rate == 0:
                 success_rate = 1
             p *= success_rate * 0.01
-            distribute_work(arr, start + 1, end, j + 1)
+            distribute_work(arr, start + 1, end, combs + 1)
             p /= success_rate * 0.01
             used[i] = 0
 
