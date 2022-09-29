@@ -13,6 +13,7 @@ def dijkstra(node):
     heap = [(0, node)]
 
     while heap:
+        # 최단거리가 가장 짧은 정점을 선택
         min_distance, min_node = heappop(heap)
 
         # 최단거리 후보들보다 크다면 무시
