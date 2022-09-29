@@ -4,41 +4,30 @@ from collections import deque
 import sys
 sys.stdin = open('input.txt')
 
-calculator_idx = [1, 2, 3, 4]
+calculator = {1: lambda x: x + 1, 2: lambda x: x - 1, 3: lambda x: x * 2, 4: lambda x: x - 10}
 
 
-def bfs_calculate(num):
-    global count
-    global result
-
+def bfs_calculate(num, count):
     queue = deque()
     count += 1
-
-    for i in range(1, 5):
-        queue.append((calculator[i], count))
+    queue.append((num, count))
+    visited = [0] * 1000001
+    visited[num] = 1
 
     while queue:
-        visited = [0] * 5
+        num, count = queue.popleft()
+
         for i in range(1, 5):
-            if not visited[i]:
-                visited[i] = 1
-                cal_func = queue.popleft()[0]
-                result = cal_func(num)
-                print(result, count)
-                queue.append((calculator[i], count + 1))
+            calculation_result = calculator[i](num)
 
-    # bfs_calculate(result)
+            if calculation_result == M:
+                return count
 
-
-
-calculator = {1: lambda x: x + 1, 2: lambda x: x - 1, 3: lambda x: x * 2, 4: lambda x: x - 10}
+            if 0 < calculation_result <= 1000000 and not visited[calculation_result]:
+                visited[calculation_result] = 1
+                queue.append((calculation_result, count + 1))
 
 
 for test_case in range(1, int(input()) + 1):
     N, M = map(int, input().split())
-
-    result = 0
-    count = 0
-    bfs_calculate(N)
-    print()
-
+    print(f'#{test_case} {bfs_calculate(N, 0)}')
