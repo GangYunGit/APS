@@ -8,9 +8,16 @@ def bfs(i, j):
 
     while queue:
         temp_i, temp_j = queue.popleft()
-        if {key, (temp_i, temp_j)} in GS24.items():
-            if abs(temp_i - i) + abs(temp_j - j) <= 1000:
-                queue.append((temp_i, temp_j))
+        if temp_i == home[0] and temp_j == home[1]:
+            print("happy")
+            break
+
+        for key, points in GS24.items():
+            distance = abs(points[0] - temp_i) + abs(points[1] - temp_j)
+            if not visited[key] and distance <= 1000:
+                visited[key] = True
+                queue.append((points[0], points[1]))
+
     else:
         print("sad")
 
@@ -19,15 +26,10 @@ for test_case in range(1, int(input()) + 1):
     GS24_num = int(input())
     home = tuple(map(int, input().split()))
     GS24 = {i: tuple(map(int, input().split())) for i in range(GS24_num)}
+    GS24[GS24_num] = home
     goal = tuple(map(int, input().split()))
 
     visited = [False for _ in range(GS24_num + 1)]
-    # bfs(goal[0], goal[1])
-    print(GS24)
-    for (temp_i, temp_j) in GS24.values():
-        print(temp_i, temp_j)
-
-
-
+    bfs(goal[0], goal[1])
 
 
