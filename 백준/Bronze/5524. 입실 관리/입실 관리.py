@@ -1,0 +1,1 @@
+[print(*input().lower().split('\n')) for _ in range(int(input()))]
