@@ -9,7 +9,7 @@ for _ in range(n):
     if input_num != 0:
         heappush(heap, (abs(input_num), input_num))
     else:
-        if not heap:
-            print(0)
-        else:
+        try:
             print(heappop(heap)[1])
+        except:
+            print(0)
