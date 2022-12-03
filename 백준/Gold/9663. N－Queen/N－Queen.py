@@ -1,51 +1,36 @@
 import sys
 input = sys.stdin.readline
 
+
 def dfs(row, col):
     global count
-    board[row][col] = 100
+    board[row][col] = 1
 
     if row == N - 1:
-        # print(board)
-        # print('찾음')
         count += 1
         return
 
-    for i in range(N):
-        if i != row:
-            board[i][col] += 1
-
-    for j in range(N):
-        if j != col:
-            board[row][j] += 1
-
-    for dia in range(1, N):
-        if row + dia < N and col + dia < N:
-            board[row + dia][col + dia] += 1
-        if row + dia < N and col - dia >= 0:
-            board[row + dia][col - dia] += 1
-
-    # print(board)
+    for i in range(1, N):
+        board[i][col] += 1
+        board[row][i] += 1
+        if row + i < N and col + i < N:
+            board[row + i][col + i] += 1
+        if row + i < N and col - i >= 0:
+            board[row + i][col - i] += 1
 
     next_row = row + 1
     for next_col in range(N):
         if board[next_row][next_col] == 0:
             dfs(next_row, next_col)
-            board[next_row][next_col] -= 100
+            board[next_row][next_col] -= 1
 
-    for i in range(N):
-        if i != row:
-            board[i][col] -= 1
-
-    for j in range(N):
-        if j != col:
-            board[row][j] -= 1
-
-    for dia in range(1, N):
-        if row + dia < N and col + dia < N:
-            board[row + dia][col + dia] -= 1
-        if row + dia < N and col - dia >= 0:
-            board[row + dia][col - dia] -= 1
+    for i in range(1, N):
+        board[i][col] -= 1
+        board[row][i] -= 1
+        if row + i < N and col + i < N:
+            board[row + i][col + i] -= 1
+        if row + i < N and col - i >= 0:
+            board[row + i][col - i] -= 1
 
 
 N = int(input())
