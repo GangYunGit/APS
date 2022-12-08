@@ -9,8 +9,10 @@ gain_a = dp[day - 1][0]
 gain_b = dp[day - 1][1]
 
 for a in range(rice):
-    for b in range(rice):
-        if gain_a * a + gain_b * b == rice:
-            if 1 <= a <= b:
-                print(a, b, sep='\n')
-                exit()
+    remain_rice = rice - gain_a * a
+    if remain_rice % gain_b == 0:
+        b = remain_rice // gain_b
+        if 1 <= a <= b:
+            print(a)
+            print(b)
+            break
