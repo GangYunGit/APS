@@ -6,7 +6,8 @@ di = [-1, 0, 1, 0]
 dj = [0, 1, 0, -1]
 
 
-def melt_check():
+def melt_checker(ice):
+    melt_points = []
     for i in range(ice_size):
         for j in range(ice_size):
             melt_count = 0
@@ -21,6 +22,31 @@ def melt_check():
 
             if melt_count < 3 and ice[i][j] > 0:
                 melt_points.append((i, j))
+
+    return melt_points
+
+
+def fire_storm(ice):
+    for power in power_list:
+        magic_power = 2 ** power
+        divide = ice_size // magic_power
+        new_ice = [[] for _ in range(ice_size)]
+        for i in range(divide):
+            for j in range(divide):
+                storm = [[] for _ in range(magic_power)]
+                for r_i in range(magic_power):
+                    for r_j in range(magic_power):
+                        storm[r_i].append(ice[i * magic_power + r_i][j * magic_power + r_j])
+                rotated_storm = list(zip(*storm[::-1]))
+                for col in range(magic_power):
+                    for k in rotated_storm[col]:
+                        new_ice[i * magic_power + col].append(k)
+
+        ice = new_ice
+        for point in melt_checker(ice):
+            ice[point[0]][point[1]] -= 1
+
+    return ice
 
 
 def bfs(i, j):
@@ -51,30 +77,7 @@ ice_size = 2 ** N
 ice = [list(map(int, input().split())) for _ in range(ice_size)]
 power_list = list(map(int, input().split()))
 result = 0
-
-for power in power_list:
-    magic_power = 2 ** power
-    divide = ice_size // magic_power
-    new_ice = [[] for _ in range(ice_size)]
-    for i in range(divide):
-        rotated_storm = []
-        for j in range(divide):
-            storm = [[] for _ in range(magic_power)]
-            for r_i in range(magic_power):
-                for r_j in range(magic_power):
-                    storm[r_i].append(ice[i * magic_power + r_i][j * magic_power + r_j])
-            rotated_storm = list(map(list, zip(*storm[::-1])))
-
-            for col in range(magic_power):
-                for k in rotated_storm[col]:
-                    new_ice[i * magic_power + col].append(k)
-    # print(new_ice)
-    ice = new_ice
-    melt_points = []
-    melt_check()
-
-    for point in melt_points:
-        ice[point[0]][point[1]] -= 1
+ice = fire_storm(ice)
 
 for i in range(ice_size):
     for j in range(ice_size):
