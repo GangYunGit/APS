@@ -43,7 +43,7 @@ def move_sand(i, j, plus_d):
         if direction == 0 or direction == 2:
             k = 0.07
         else:
-            k = 0
+            continue
         sand_i = i + di_sand1[direction]
         sand_j = j + dj_sand1[direction]
         sand_part = int(total_sand * k)
@@ -69,7 +69,7 @@ def move_sand(i, j, plus_d):
         elif direction == 1:
             k = 0.05
         else:
-            k = 0
+            continue
         sand_i = i + di_sand3[direction]
         sand_j = j + dj_sand3[direction]
         sand_part = int(total_sand * k)
