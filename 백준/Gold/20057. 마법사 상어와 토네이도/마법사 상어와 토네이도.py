@@ -84,18 +84,12 @@ def move_sand(i, j, plus_d):
 N = int(input())
 grid = [list(map(int, input().split())) for _ in range(N)]
 
-total = 0
-for i in range(N):
-    for j in range(N):
-        total += grid[i][j]
-
-center_i, center_j = N // 2, N // 2
-i, j = center_i, center_j
+total = sum(map(sum, grid))
+i, j = N // 2, N // 2
 direction = 0
 start, end = 0, 1
 
 while True:
-
     if i == 0 and j == 0:
         break
     i, j, start = spiral(i, j, direction, start)
@@ -106,8 +100,5 @@ while True:
         if direction % 2 == 0:
             end += 1
 
-result = 0
-for i in range(N):
-    for j in range(N):
-        result += grid[i][j]
-print(total - result)
+remain_sand = sum(map(sum, grid))
+print(total - remain_sand)
