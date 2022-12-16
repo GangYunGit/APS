@@ -26,18 +26,15 @@ def bfs(i, j):
                 queue.append((check_i, check_j))
 
     if sheep > wolf:
-        wolf = 0
+        result[0] += sheep
     else:
-        sheep = 0
-
-    result[0] += sheep
-    result[1] += wolf
+        result[1] += wolf
 
 
 row, col = map(int, input().split())
 yard = [list(input()) for _ in range(row)]
-result = [0, 0]
 
+result = [0, 0]
 visited = [[False] * col for _ in range(row)]
 for i in range(row):
     for j in range(col):
