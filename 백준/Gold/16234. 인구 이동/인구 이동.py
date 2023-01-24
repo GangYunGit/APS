@@ -1,5 +1,6 @@
 from collections import deque
 from copy import deepcopy
+import sys
 
 
 def bfs(i, j):
@@ -34,6 +35,7 @@ def bfs(i, j):
 di = [-1, 0, 1, 0]
 dj = [0, 1, 0, -1]
 
+input = sys.stdin.readline
 N, L, R = map(int, input().split())
 ground = [list(map(int, input().split())) for _ in range(N)]
 count = 0
