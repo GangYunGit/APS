@@ -28,11 +28,11 @@ for v1, v2 in edges:
     graph[v2].append(v1)
 
 bfs(1)
-distances.sort(key=lambda x: (-x[1], x[0]))
-
-hutgan_num, hutgan_distance, same_hutgan = distances[0][0], distances[0][1], 0
-for n, d in distances:
-    if d == hutgan_distance:
-        same_hutgan += 1
-
-print(hutgan_num, hutgan_distance, same_hutgan)
+max_distance = distances[-1][1]
+result = []
+for i in range(len(distances) - 1, -1, -1):
+    if distances[i][1] == max_distance:
+        result.append((distances[i][0], distances[i][1]))
+    else:
+        break
+print(*min(result), len(result))
