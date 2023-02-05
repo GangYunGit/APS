@@ -1,10 +1,15 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
 words = set()
+words_list = []
 for i in range(N):
     word = input()
-    words.add((word, len(word)))
-words_list = list(words)
-words_list.sort(key=lambda x: (x[1], x[0]))
+    words.add(word)
+for i in words:
+    words_list.append((len(i), i))
+words_list.sort()
 
 for word in words_list:
-    print(word[0], end="\n")
+    print(word[1], end="")
