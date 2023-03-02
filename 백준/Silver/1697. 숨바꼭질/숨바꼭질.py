@@ -6,7 +6,7 @@ def bfs(v):
     min_depth = 100000000
     if v == K:
         return 0
-
+    
     visited[v] = True
     for first_method in range(1, 4):
         depth = 1
@@ -14,14 +14,13 @@ def bfs(v):
 
     while queue:
         temp_n, depth = queue.popleft()
-        if 0 <= temp_n < 100001:
-            visited[temp_n] = True
-            # print(temp_n)
-            if temp_n == K:
-                if depth < min_depth:
-                    min_depth = depth
-                break
-            depth += 1
+        visited[temp_n] = True
+        # print(temp_n)
+        if temp_n == K:
+            if depth < min_depth:
+                min_depth = depth
+            break
+        depth += 1
 
         for method in range(1, 4):
             next_n = move[method](temp_n)
@@ -39,5 +38,5 @@ move = {
 }
 
 N, K = map(int, input().split())
-visited = [False] * 100001
+visited = [False] * 200001
 print(bfs(N))
