@@ -17,7 +17,6 @@ def solution(sequence, k):
                 if len(part_list) <= length_compare:
                     length_compare = len(part_list)
                     answer = [first_index, last_index]
-                # print(part_list, first_index, last_index)
             sum_part -= part_list.popleft()
-    
+        
     return answer
