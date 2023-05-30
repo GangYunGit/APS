@@ -5,7 +5,6 @@ def solution(skill, skill_trees):
         for custom_skill in skill_tree:
             if custom_skill in skill:
                 if next_skill_index != skill.index(custom_skill):
-                    next_skill_index = -1
                     break
                 else:
                     next_skill_index += 1
