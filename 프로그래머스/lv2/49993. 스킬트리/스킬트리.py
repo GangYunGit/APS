@@ -9,7 +9,10 @@ def solution(skill, skill_trees):
                     break
                 else:
                     next_skill_index += 1
-        if next_skill_index >= 0:
-            answer += 1
+                    
+        else:
+            answer += 1    
+                    
+            
             
     return answer
