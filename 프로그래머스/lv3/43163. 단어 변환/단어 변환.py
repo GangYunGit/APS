@@ -5,8 +5,7 @@ def change_checker(word_1, word_2):
             count += 1
     if count == 1:
         return True
-    else:
-        return False
+    return False
 
 def solution(begin, target, words):
     if target not in words:
