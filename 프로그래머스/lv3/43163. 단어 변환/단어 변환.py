@@ -9,20 +9,19 @@ def change_checker(word_1, word_2):
         return False
 
 def solution(begin, target, words):
-    answer = 0
     if target not in words:
         return 0
     visited = [False for _ in range(len(words))]
+    min_length = len(words)
     route = []
-    answer = len(words)
     
     def dfs(begin):
-        nonlocal answer
-        if len(route) > answer:
+        nonlocal min_length
+        if len(route) > min_length:
             return
         
         if begin == target:
-            answer = len(route)
+            min_length = len(route)
             return
             
         for i in range(len(words)):
@@ -35,4 +34,4 @@ def solution(begin, target, words):
     
     dfs(begin)
     
-    return answer
+    return min_length
