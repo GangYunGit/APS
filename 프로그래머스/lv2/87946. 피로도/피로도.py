@@ -14,11 +14,9 @@ def solution(k, dungeons):
                     fatigue -= choice[i][1]
                 else:
                     break
-                if choice[i][1] > fatigue:
-                    break
+                    
+            max_count = max(count, max_count)
             
-            if count > max_count:
-                max_count = count
             return 
         
         for i in range(end):
