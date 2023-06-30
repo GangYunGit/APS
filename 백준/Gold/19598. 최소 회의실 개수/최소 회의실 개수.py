@@ -1,16 +1,19 @@
+import sys
+from heapq import heappush, heappop
+input = sys.stdin.readline
+
 n = int(input())
 meeting_list = [list(map(int, input().split())) for _ in range(n)]
 meeting_list.sort()
-room_end_time_list = []
+heap = []
 for start, end in meeting_list:
-    if not room_end_time_list:
-        room_end_time_list.append(end)
+    if not heap:
+        heap.append(end)
     else:
-        for i in range(len(room_end_time_list)):
-            if room_end_time_list[i] <= start:
-                room_end_time_list[i] = end
-                break
+        if heap[0] <= start:
+            heappop(heap)
+            heappush(heap, end)
         else:
-            room_end_time_list.append(end)
+            heappush(heap, end)
 
-print(len(room_end_time_list))
+print(len(heap))
