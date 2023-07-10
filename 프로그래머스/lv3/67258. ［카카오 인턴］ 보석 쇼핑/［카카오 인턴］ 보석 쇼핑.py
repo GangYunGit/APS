@@ -3,7 +3,6 @@ from collections import defaultdict
 def solution(gems):
     gem_types = set(gems)
     gems_dict = defaultdict(int)
-    shopping_list = {}
     results = []
     start, end = 0, 0
     while True:
