@@ -1,37 +1,35 @@
 def pre_order(node):
-    print(tree[node][0], end='')
-    for i in range(v):
-        if tree[i][0] == tree[node][1]:
-            pre_order(i)
-    for i in range(v):
-        if tree[i][0] == tree[node][2]:
-            pre_order(i)
+    if node == '.':
+        return
+    print(node, end='')
+    pre_order(tree[node][0])
+    pre_order(tree[node][1])
 
 
 def in_order(node):
-    for i in range(v):
-        if tree[i][0] == tree[node][1]:
-            in_order(i)
-    print(tree[node][0], end='')
-    for i in range(v):
-        if tree[i][0] == tree[node][2]:
-            in_order(i)
+    if node == '.':
+        return
+    in_order(tree[node][0])
+    print(node, end='')
+    in_order(tree[node][1])
 
 
 def post_order(node):
-    for i in range(v):
-        if tree[i][0] == tree[node][1]:
-            post_order(i)
-    for i in range(v):
-        if tree[i][0] == tree[node][2]:
-            post_order(i)
-    print(tree[node][0], end='')
+    if node == '.':
+        return
+    post_order(tree[node][0])
+    post_order(tree[node][1])
+    print(node, end='')
 
 
-v = int(input())
-tree = [input().split() for _ in range(v)]
-pre_order(0)
+n = int(input())
+tree = dict()
+for _ in range(n):
+    parent, left_child, right_child = input().split()
+    tree[parent] = (left_child, right_child)
+
+pre_order('A')
 print()
-in_order(0)
+in_order('A')
 print()
-post_order(0)
+post_order('A')
