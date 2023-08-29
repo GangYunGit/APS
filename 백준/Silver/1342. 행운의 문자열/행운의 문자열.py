@@ -3,8 +3,7 @@ def combinations(prev_word):
 
     if len(pick) == word_length:
         new_word = "".join(pick)
-        if new_word not in lucky_string:
-            lucky_string.add(new_word)
+        lucky_string.add(new_word)
         return
 
     for i in range(word_length):
