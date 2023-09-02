@@ -1,36 +1,38 @@
-import sys
 from collections import deque
+import sys
 
-input = sys.stdin.readline
 
-def bfs(start):
-    queue = deque([start])
-    visited = [False for _ in range(n+1)]
-    visited[start] = True
-    count = 1
+def bfs(v):
+    visited = [False for _ in range(n + 1)]
+    queue = deque()
+    queue.append(v)
+    visited[v] = True
+    depth = 0
 
     while queue:
         v = queue.popleft()
-        for i in graph[v]:
-            if visited[i] == False:
-                visited[i] = True
-                queue.append(i)
-                count += 1
-    return count  
+        for next_v in graph[v]:
+            if not visited[next_v]:
+                visited[next_v] = True
+                queue.append(next_v)
+                depth += 1
 
+    hacked.append(depth)
+
+
+input = sys.stdin.readline
 n, m = map(int, input().split())
-graph = [[]for _ in range(n+1)]
+graph = [[] for _ in range(n + 1)]
+hacked = [0]
+for i in range(m):
+    v1, v2 = map(int, input().split())
+    graph[v2].append(v1)
 
-for _ in range(m):
-    x, y = map(int, input().split())
-    graph[y].append(x) # 단방향
+result = [0 for _ in range(n + 1)]
+for i in range(1, n + 1):
+    bfs(i)
 
-hack = [0 for _ in range(n+1)]  
-
-for i in range(1, n+1):
-    hack[i] = bfs(i)
-
-max_count = max(hack)
-for i in range(1, n+1):
-    if max_count == hack[i]:
-        print(i, end = ' ')
+max_hacked = max(hacked)
+for i in range(1, n + 1):
+    if hacked[i] == max_hacked:
+        print(i, end=' ')
