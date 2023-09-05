@@ -1,11 +1,11 @@
-words, bomb = input(), input()
+words, bomb = input(), list(input().rstrip())
 stack = []
+bomb_length = len(bomb)
 
 for word in words:
     stack.append(word)
-    check = stack[len(stack) - len(bomb):]
-    if "".join(check) == bomb:
-        for i in range(len(bomb)):
+    if stack[-bomb_length:] == bomb:
+        for i in range(bomb_length):
             stack.pop()
 
 if stack:
