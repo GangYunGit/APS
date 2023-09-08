@@ -21,12 +21,13 @@ def move_ball(i, j, direction):
 
 
 def bfs(red_i, red_j, blue_i, blue_j):
+    visited = [[[[False] * col_size for _ in range(row_size)] for _ in range(col_size)] for _ in range(row_size)]
     queue = deque()
     queue.append((red_i, red_j, blue_i, blue_j, 0))
+    visited[red_i][red_j][blue_i][blue_j] = True
 
     while queue:
         red_i, red_j, blue_i, blue_j, count = queue.popleft()
-        # print(red_i, red_j, blue_i, blue_j, count)
         if count > 10:
             break
 
@@ -48,7 +49,9 @@ def bfs(red_i, red_j, blue_i, blue_j):
                         after_blue_move_i -= di[direction]
                         after_blue_move_j -= dj[direction]
 
-            queue.append((after_red_move_i, after_red_move_j, after_blue_move_i, after_blue_move_j, count + 1))
+            if not visited[after_red_move_i][after_red_move_j][after_blue_move_i][after_blue_move_j]:
+                visited[after_red_move_i][after_red_move_j][after_blue_move_i][after_blue_move_j] = True
+                queue.append((after_red_move_i, after_red_move_j, after_blue_move_i, after_blue_move_j, count + 1))
 
     return -1
 
