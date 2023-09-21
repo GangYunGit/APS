@@ -1,4 +1,5 @@
 from collections import deque
+import sys
 
 
 def move_robot():
@@ -39,6 +40,7 @@ def move_robot():
     return result
 
 
+input = sys.stdin.readline
 n, k = map(int, input().split())
 durability_info = list(map(int, input().split()))
 conveyor = deque()
