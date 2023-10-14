@@ -1,0 +1,5 @@
+n = int(input())
+k = int(input())
+sensor_points = sorted(list(map(int, input().split())))
+distance = sorted([sensor_points[i + 1] - sensor_points[i] for i in range(n - 1)], reverse=True)
+print(sensor_points[n - 1] - sensor_points[0] - sum(distance[: k - 1]))
