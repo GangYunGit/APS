@@ -5,13 +5,12 @@ dj = [0, 0, 0, -1, 1, -1, 1, -1, 1]
 
 
 def bfs(i, j):
-    visited = [[False] * 8 for _ in range(8)]
     queue = deque([(i, j)])
 
     while queue:
+        visited = [[False] * 8 for _ in range(8)]
         for _ in range(len(queue)):
             i, j = queue.popleft()
-            visited[i][j] = False
             if maze[i][j] == '#':
                 continue
             if i == 0:
