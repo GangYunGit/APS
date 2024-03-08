@@ -30,6 +30,7 @@ for i in range(len(bracket)):
         stack.pop()
         temp //= 3
 
+        
 if is_right and not stack:
     print(result)
 else:
