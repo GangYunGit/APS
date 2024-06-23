@@ -30,7 +30,6 @@ def bfs(start_puzzle):
 
 
 puzzle = [list(map(int, input().split())) for _ in range(3)]
-
 sorted_puzzle = '123456780'
 start_puzzle = ''
 for i in range(3):
